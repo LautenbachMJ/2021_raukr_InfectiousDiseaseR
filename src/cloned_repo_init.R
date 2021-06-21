@@ -4,4 +4,5 @@ if (!require("renv")) install.packages("renv")
 
 library("renv")
 #renv::init()
-renv::activate()
+#renv::activate()
+renv::restore()
