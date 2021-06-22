@@ -1,6 +1,6 @@
 ## short script to test functions on example data
 library(tidyverse)
-source("src/cohort_overview.R")
+source("src/overview_plot.R")
 source("src/time_between.R")
 source("src/date_from.R")
 source("src/plot_param_per_day.R")
