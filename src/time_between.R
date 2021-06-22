@@ -13,14 +13,12 @@ time_between <- function(input, on_date, vis_date, treat_date){
   if(is.Date(input[[treat_date]])==FALSE ||is.Date(input[[vis_date]])==FALSE ||is.Date(input[[on_date]])==FALSE){
     stop("No dates detected, check if class is correct")
   } else {
-    input_calc <- input %>% 
-      mutate(days_po =.[[vis_date]] - .[[on_date]])
-    input_calc <- input_calc %>% 
-      mutate(days_pt =.[[vis_date]] - .[[treat_date]])
-    input_calc <- input_calc %>% 
-      mutate(days_pt = replace(days_pt,days_pt<=0, NA))
-    input_calc <- input_calc %>% mutate(art_status = ifelse(is.na(days_pt), "no", "yes"))
+    input %>% 
+      mutate(
+        days_po =.[[vis_date]] - .[[on_date]], 
+        days_pt =.[[vis_date]] - .[[treat_date]],
+        days_pt = replace(days_pt,days_pt<=0, NA),
+        art_status = ifelse(is.na(days_pt), "no", "yes"),
+      )
   }
-  
-  return(input_calc)
 }
