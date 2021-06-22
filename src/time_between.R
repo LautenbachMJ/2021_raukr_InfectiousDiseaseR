@@ -1,11 +1,11 @@
-#' Takes columns of dates and calculates number of days between these dates.
+#' Takes columns of dates and calculates number of days between these dates. 
 #'
-#' @param input file containing columns of type Date and calculates number of days between the dates
-#' @param on_date column with date for disease onset
-#' @param vis_date column with date for visits
-#' @param treat_date column with date for start of treatment
+#' @param input file containing columns of class Date 
+#' @param on_date column name of column with dates for disease onset
+#' @param vis_date column name of column with dates for visits
+#' @param treat_date column name of column with dates for start of treatment
 #'
-#' @return
+#' @return Columns named days_po, days_pt and art_status with number of days from onset and start of treatment as well as treatment status
 #' @export
 #' @import tidyverse
 #' @examples
@@ -19,6 +19,7 @@ time_between <- function(input, on_date, vis_date, treat_date){
       mutate(days_pt =.[[vis_date]] - .[[treat_date]])
     input_calc <- input_calc %>% 
       mutate(days_pt = replace(days_pt,days_pt<=0, NA))
+    input_calc <- input_calc %>% mutate(art_status = ifelse(is.na(days_pt), "no", "yes"))
   }
   
   return(input_calc)
