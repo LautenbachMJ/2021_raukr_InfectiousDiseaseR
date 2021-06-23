@@ -60,7 +60,9 @@ Create package with functions that can
 - Predict viral load values for patients 
 - Generate cluster for predicted and existing values
 - Visualize the groups
+
 --
+
 ## Actual achievements 
 - Visualize the original data
 - Process the data
@@ -135,6 +137,7 @@ input_data <- read_delim("../data/input_data.csv", delim = ";")
 str(input_data)
 ```
 ]
+
 --
 
 We have created functions that
@@ -172,8 +175,12 @@ str(parsed_data)
 ]
 
 ---
-# Plots 
-## here are some plots
+Data overview
+
+```{r, echo=FALSE, warning=FALSE, message=FALSE, dpi=150, out.width = '400px'}
+overview_plot(parsed_data = parsed_data, param_mapping = param_mapping)
+```
+
 
 
 
