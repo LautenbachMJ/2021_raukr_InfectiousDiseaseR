@@ -10,7 +10,11 @@
 /manuscript/*
 bin/
 environment/
+<<<<<<< HEAD
+src/Presentation.Rmd
+=======
 /src/Presentation.Rmd
+>>>>>>> ef2f6e2b18987bba415b33519d43e9f839b22c01
 
 *.html
 !README.txt
