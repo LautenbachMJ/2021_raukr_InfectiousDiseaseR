@@ -23,22 +23,12 @@ input_data <- read_delim("data/input_data.csv", delim = ";")
 param_mapping <- param_parsing(input_data = input_data, input_param1 = "cd4", input_param2 = "cd8", input_param3 = "viral_load")
 time_mapping <- time_parsing(input_data = input_data, on_date = "onset_date", vis_date = "visit_date", treat_date = "treatment_date")
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-View(param_mapping)
->>>>>>> 4b71acaf1a505f35bb129888fd998431eed24926
-=======
->>>>>>> 9b74e272cfd8573b691897f7f61a28d2733dd81f
+
 ## ============ 
 ## data wrangling
 ## ============ 
 parsed_data <-
-<<<<<<< HEAD
-  input_data %>% 
-=======
 input_data %>% 
->>>>>>> 4b71acaf1a505f35bb129888fd998431eed24926
   ## transform "_date" columns into date format
   date_from() %>% 
   ## mapping input variable names to function "under-the-hood" variables
@@ -48,8 +38,6 @@ input_data %>%
   time_between(names(time_mapping)) %>% 
   ## calculate numbers of visits
   visits_number()
-  
-
 
 ## ============ 
 ## downstream 
