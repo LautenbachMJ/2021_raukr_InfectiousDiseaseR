@@ -69,6 +69,7 @@ Create package with functions that can
 - Process the data
 - Plot the data
 - Write generalized functions
+- Predict data using models
 - Create a workflow script using the functions but not a package
 - Make a presentation
 
@@ -133,17 +134,8 @@ input_data %>% glimpse()
 ```
 ]
 
-
-
-<<<<<<< HEAD
-=======
-We have created functions that
-1. Calculates number of days between selected columns of class Date
-2. Adds column with treatment status
-3. Adds column with visit number
-
->>>>>>> aec9568bc9b4adc378a06410408332f8351c205f
 ---
+
 # Output after data preparation
 .myclass[
 ```{r, message=FALSE, echo=FALSE}
@@ -193,11 +185,7 @@ overview_plot(parsed_data = parsed_data, param_mapping = param_mapping)
 
 # Plot parameters per days and per patient
 
-<<<<<<< HEAD
 
-
-=======
->>>>>>> aec9568bc9b4adc378a06410408332f8351c205f
 ```{r, echo=FALSE, warning=FALSE, message=FALSE, dpi=150, out.width = '500px'}
 plot_param_per_day(parsed_data, y = param1) + labs(col="Patient ID") + xlab("Days post onset") + ylab("CD4 levels")
 ```
@@ -206,6 +194,11 @@ plot_param_per_day(parsed_data, y = param1) + labs(col="Patient ID") + xlab("Day
 ---
 
 # plot with predicted values
+
+.pull-right-30[
+<img src="plot_predicted values.jpg">
+]
+
 
 
 ---
