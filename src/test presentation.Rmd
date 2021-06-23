@@ -99,11 +99,19 @@ Create package with functions that can
 ---
 
 ```{r, message=FALSE, warning=FALSE, echo=FALSE}
+source("overview_plot.R")
 source("param_parsing.R")
 source("time_parsing.R")
 source("time_between.R")
 source("date_from.R")
+source("plot_param_per_day.R")
 source("visits_number.R")
+source("plot_per_param_patient.R")
+source("plot_patient_treatmentStatus.R")
+source("create_longerdf.R")
+source("norm_distr_plot.R")
+source("smoothing_spline_regression.R")
+source("smooth_spline_plot.R")
 library(tidyverse)
 library(magrittr)
 ```
@@ -171,17 +179,26 @@ str(parsed_data)
 
 ---
 # Plots
-## here are some more plots
+## Plot parameters per days and per patient
+
+```{r, message=FALSE, echo=FALSE}
+plot_param_per_day(parsed_data, y = param1) + labs(col="Patient ID") + xlab("Days post onset") + ylab("CD4 levels")
+plot_param_per_day(parsed_data, y = param2) + labs(col="Patient ID") + xlab("Days post onset") + ylab("CD8 levels")
+plot_param_per_day(parsed_data, y = param3) + labs(col="Patient ID") + xlab("Days post onset") + ylab("Viral load")
+```
+
 
 
 
 ---
 
-# Challanges
+# Challenges
 
-- GitHub 
+- Resolving conflicts with Git and GitHub 
 
-- css formating 
+- CSS formatting of the slide presentation
+
+- Packages impossible to install
 
 
 ---
