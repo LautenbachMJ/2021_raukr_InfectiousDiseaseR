@@ -73,6 +73,7 @@ Create package with functions that can
 ---
 
 # Work flow
+#### Packages and methods used in this project
 
 --
 
@@ -141,10 +142,10 @@ str(input_data)
 --
 
 We have created functions that
-1. Calculates number of days between selected columns of class Date
+1. Calculates number of days between selected columns of class Date 
 2. Adds column with treatment status
 3. Adds column with visit number
-
+Mainly using the `tidyverse` package
 
 ---
 # Output after data preparation
@@ -181,6 +182,7 @@ Data overview
 overview_plot(parsed_data = parsed_data, param_mapping = param_mapping)
 ```
 
+Plot displaying each patient and for which visits data is available
 
 
 
