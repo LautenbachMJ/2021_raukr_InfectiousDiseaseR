@@ -1,7 +1,7 @@
 ---
 title: "Project 6"
-subtitle: "analysis of infections data "
-author: "Best group ever"
+subtitle: "Analysis of infection's data "
+author: "Jamirah Nazziwa, Jennie Olofsson, Julius Lautenbach, Ona Deulofeu, Zoé Pochon"
 institute: "RaukR 2021"
 date: "2021/06/22 (updated: `r Sys.Date()`)"
 output:
