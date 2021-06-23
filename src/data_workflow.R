@@ -5,7 +5,7 @@ source("src/time_between.R")
 source("src/date_from.R")
 source("src/plot_param_per_day.R")
 
-
+#test
 #load input data
 input_data <- read.csv("data/input_data.csv", stringsAsFactors = FALSE, sep=";")
 input_data <- as.tibble(input_data) ### Comment julius: I think, read_delim() (readr/tidyverse function) reads it automatically into a tibble
