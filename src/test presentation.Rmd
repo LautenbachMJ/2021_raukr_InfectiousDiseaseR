@@ -99,6 +99,11 @@ Create package with functions that can
 ---
 
 ```{r, message=FALSE, warning=FALSE, echo=FALSE}
+source("param_parsing.R")
+source("time_parsing.R")
+source("time_between.R")
+source("date_from.R")
+source("visits_number.R")
 library(tidyverse)
 library(magrittr)
 ```
@@ -117,13 +122,9 @@ library(magrittr)
 input_data <- read_delim("../data/input_data.csv", delim = ";")
 ```
 
-```{r, eval=FALSE}
-head(input_data)
-```
-
 .myclass[
 ```{r, echo=FALSE}
-head(input_data)
+str(input_data)
 ```
 ]
 
@@ -131,14 +132,6 @@ head(input_data)
 # Output after data preparation
 .myclass[
 ```{r, message=FALSE, echo=FALSE}
-source("param_parsing.R")
-source("time_parsing.R")
-source("time_between.R")
-source("date_from.R")
-source("visits_number.R")
-#load input data
-input_data <- read_delim("../data/input_data.csv", delim = ";")
-
 # extract parameter names
 param_mapping <- param_parsing(input_data = input_data, input_param1 = "cd4", input_param2 = "cd8", input_param3 = "viral_load")
 time_mapping <- time_parsing(input_data = input_data, on_date = "onset_date", vis_date = "visit_date", treat_date = "treatment_date")
@@ -158,7 +151,8 @@ parsed_data <-
   time_between(names(time_mapping)) %>% 
   ## calculate numbers of visits
   visits_number()
-head(parsed_data)
+
+str(parsed_data)
 ```
 ]
 
