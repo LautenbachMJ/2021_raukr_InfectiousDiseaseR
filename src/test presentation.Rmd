@@ -98,14 +98,12 @@ Create package with functions that can
 
 ---
 
-# Prepare the data
-
 ```{r, message=FALSE, warning=FALSE, echo=FALSE}
 library(tidyverse)
 library(magrittr)
 ```
 
-1. Input data
+# Input before preparing the data
 ```{css,echo=FALSE}
 .myclass>pre>code>.remark-code-line{
   font-size: 10px;
@@ -124,8 +122,39 @@ head(input_data)
 ]
 
 ---
-# Output data
+# Output after data preparation
+.myclass[
+```{r, message=FALSE, echo=FALSE}
+source("param_parsing.R")
+source("time_parsing.R")
+source("time_between.R")
+source("date_from.R")
+source("visits_number.R")
+#load input data
+input_data <- read_delim("../data/input_data.csv", delim = ";")
 
+# extract parameter names
+param_mapping <- param_parsing(input_data = input_data, input_param1 = "cd4", input_param2 = "cd8", input_param3 = "viral_load")
+time_mapping <- time_parsing(input_data = input_data, on_date = "onset_date", vis_date = "visit_date", treat_date = "treatment_date")
+
+
+## ============ 
+## data wrangling
+## ============ 
+parsed_data <-
+  input_data %>% 
+  ## transform "_date" columns into date format
+  date_from() %>% 
+  ## mapping input variable names to function "under-the-hood" variables
+  rename(time_mapping) %>% 
+  rename(param_mapping) %>%
+  ## calculate days between time points
+  time_between(names(time_mapping)) %>% 
+  ## calculate numbers of visits
+  visits_number()
+head(parsed_data)
+```
+]
 
 ---
 # Plots 
