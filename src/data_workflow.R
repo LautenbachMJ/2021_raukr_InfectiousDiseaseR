@@ -20,15 +20,13 @@ source("src/smooth_spline_plot.R")
 input_data <- read_delim("data/input_data.csv", delim = ";")
 
 # extract parameter names
-<<<<<<< HEAD
 param_mapping <- param_parsing(input_data = input_data, input_param1 = "cd4", input_param2 = "cd8", input_param3 = "viral_load")
 time_mapping <- time_parsing(input_data = input_data, on_date = "onset_date", vis_date = "visit_date", treat_date = "treatment_date")
-
 
 ## ============ 
 ## data wrangling
 ## ============ 
-#parsed_data <-
+parsed_data <-
   input_data %>% 
   ## transform "_date" columns into date format
   date_from() %>% 
@@ -60,8 +58,6 @@ overview_plot(parsed_data = data2, param_mapping = param_mapping)
 
 
 
-=======
-param_mapping <- param_parsing(input_data = input_data,  input_param1 = "cd4", input_param2 = "cd8", input_param3 = "viral_load")
 
 ## edditing input data: convert columns with dates character to date, 
 ## then calculates number of days between dates and adds column with 
@@ -104,15 +100,3 @@ plot_param_per_day(data, y = cd4) + labs(col="Patient ID") + xlab("Days post ons
 plot_param_per_day(data, y = cd8) + labs(col="Patient ID") + xlab("Days post onset") + ylab("CD8 levels")
 plot_param_per_day(data, y = viral_load) + labs(col="Patient ID") + xlab("Days post onset") + ylab("Viral load")
 
-
-<<<<<<< HEAD
-## manual mapping
-#param_mapping <- c("param1" = "CD4","param2" = "CD8","param3" = "Viral_load")
-#Convert columns with dates from Character to Date
-input_data <- date_from(input_data) #format same as default "%Y-%m-%d"
-
-#calculates number of days between dates and adds column with treatment status
-date_cols <- time_mapping %>% names()
-=======
-
->>>>>>> 34f600c8368386913dd26ad979f117a1f887ffbd
