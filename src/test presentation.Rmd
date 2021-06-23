@@ -60,6 +60,7 @@ Create package with functions that can
 - Predict viral load values for patients 
 - Generate cluster for predicted and existing values
 - Visualize the groups
+- Write generalized functions
 
 --
 
@@ -67,6 +68,7 @@ Create package with functions that can
 - Visualize the original data
 - Process the data
 - Plot the data
+- Write generalized functions
 - Create a workflow script using the functions but not a package
 - Make a presentation
 
@@ -75,29 +77,22 @@ Create package with functions that can
 # Work flow
 #### Packages and methods used in this project
 
---
 
 1. Github for the collaboration
 
---
+2. `renv` for package control
 
-2. renv for package control
+3. `tidyverse` for data preparation
 
---
+4. `ggplot` for data visualization
 
-3. tidyverse for data preparation
+5. `tidymodels`/`broom` to predict parameters
 
---
+6. `roxygen2` when writing functions to prepare for package
 
-4. ggplot for data visualization
+6. `rmarkdown`, `xaringan` and `css` for the presentation
 
---
 
-5. tidymodels/broom to predict parameters
-
---
-
-6. rmarkdown, xaringan and css for the presentation
 
 ---
 
@@ -122,7 +117,7 @@ library(magrittr)
 # Input before preparing the data
 ```{css,echo=FALSE}
 .myclass>pre>code>.remark-code-line{
-  font-size: 10px;
+  font-size: 13px;
   font-style: italic;
   background: #f8f8f8 ;
   border-radius: 2px;
@@ -135,17 +130,11 @@ input_data <- read_delim("../data/input_data.csv", delim = ";")
 
 .myclass[
 ```{r, echo=FALSE}
-str(input_data)
+input_data %>% glimpse()
 ```
 ]
 
---
 
-We have created functions that
-1. Calculates number of days between selected columns of class Date 
-2. Adds column with treatment status
-3. Adds column with visit number
-Mainly using the `tidyverse` package
 
 ---
 # Output after data preparation
@@ -171,9 +160,20 @@ parsed_data <-
   ## calculate numbers of visits
   visits_number()
 
-str(parsed_data)
+parsed_data  %>% glimpse()
 ```
 ]
+
+
+
+
+We have created functions that
+1. Calculates number of days between selected columns of class Date 
+2. Adds column with treatment status
+3. Adds column with visit number
+
+Mainly using the `tidyverse` package
+
 
 ---
 #Data overview
@@ -191,21 +191,47 @@ Plot displaying each patient and for which visits data is available
 
 # Plot parameters per days and per patient
 
-```{r, message=FALSE, echo=FALSE, dpi=150, out.width = '250px'}
+```{r, message=FALSE, echo=FALSE, dpi=150, out.width = '230px'}
 plot_param_per_day(parsed_data, y = param1) + labs(col="Patient ID") + xlab("Days post onset") + ylab("CD4 levels")
 plot_param_per_day(parsed_data, y = param2) + labs(col="Patient ID") + xlab("Days post onset") + ylab("CD8 levels")
 plot_param_per_day(parsed_data, y = param3) + labs(col="Patient ID") + xlab("Days post onset") + ylab("Viral load")
 ```
 
+
+---
+
+# plot with predicted values
+
+
+---
+#Functions and files
+.pull-right-30[
+<img src="github_screenshot.png">
+]
+
 ---
 
 # Challenges
 
-- Resolving conflicts with Git and GitHub 
+- Working remotely
 
-- CSS formatting of the slide presentation
+- Resolving conflicts with Git and GitHub
+    - a lot of unmerged files
+
+- CSS formatting of the slide presentation in xaringan
 
 - Packages impossible to install
+    - troubles installing kableExtra, unsolvable error
+
+- Time
+
+
 
 ---
+background-image: url(https://upload.wikimedia.org/wikipedia/commons/thumb/7/7b/Seastack_Gotland_Gamle_hamn.jpg/1024px-Seastack_Gotland_Gamle_hamn.jpg)
+
+class: center, bottom, inverse
+#Thank you for listening.
+#Questions? 
+
 
