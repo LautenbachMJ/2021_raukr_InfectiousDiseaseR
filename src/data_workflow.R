@@ -12,7 +12,7 @@ source("src/visits_number.R")
 input_data <- read_delim("data/input_data.csv", delim = ";")
 
 # extract parameter names
-param_mapping <- param_parsing(input_data = input_data,input_param1 = "cd4", input_param2 = "cd8", input_param3 = "viral_load")
+#param_mapping <- param_parsing(input_data = input_data,input_param1 = "cd4", input_param2 = "cd8", input_param3 = "viral_load")
 
 
 #Convert columns with dates from Character to Date
