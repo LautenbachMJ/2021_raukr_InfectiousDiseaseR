@@ -10,20 +10,15 @@
 #' @import tidyverse
 #' @examples
 time_between <- function(input, on_date, vis_date, treat_date){
-  #if(lubridate::is.Date({{treat_date}})==FALSE ||lubridate::is.Date(vis_date)==FALSE ||lubridate::is.Date(on_date)==FALSE){
-   # stop("No dates detected, check if class is correct")
-  #} else {
+  if(lubridate::is.Date(input[[treat_date]])==FALSE ||lubridate::is.Date(input[[vis_date]])==FALSE ||lubridate::is.Date(input[[on_date]])==FALSE){
+    stop("No dates detected, check if class is correct")
+  } else {
     input %>% 
       mutate(
-        days_po = vis_date - on_date, 
-        days_pt = vis_date - treat_date,
+        days_po =.[[vis_date]] - .[[on_date]], 
+        days_pt =.[[vis_date]] - .[[treat_date]],
         days_pt = replace(days_pt,days_pt<=0, NA),
         art_status = ifelse(is.na(days_pt), "no", "yes"),
-        
-        #days_po =.[[vis_date]] - .[[on_date]], 
-        #days_pt =.[[vis_date]] - .[[treat_date]],
-        #days_pt = replace(days_pt,days_pt<=0, NA),
-        #art_status = ifelse(is.na(days_pt), "no", "yes"),
       )
   }
-#}
+}
