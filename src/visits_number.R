@@ -12,6 +12,6 @@
 #' @examples
 visits_number <- function(input, patient_id, visit_date){
   input %>% group_by(patient_id) %>% 
-    arrange(visit_date) %>% 
-    subset(param3 != "NA"  | param1 != "NA" | param2 != "NA" ) %>% 
+    arrange(vis_date) %>% 
+    subset(input_param1 != "NA"  | input_param2 != "NA" | input_param3 != "NA" ) %>% 
     mutate(visit = 1:n())}
