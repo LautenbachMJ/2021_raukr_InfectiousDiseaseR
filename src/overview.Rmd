@@ -1,0 +1,155 @@
+---
+title: "please insert your project title"
+author: "please insert your name"
+date: '`r format(Sys.Date(), "%Y-%m-%d")`'
+output:
+  html_document:
+    toc: true
+    toc_float: true
+    theme: united
+    highlight: pygments
+abstract: Short project description.
+knit: (function(inputFile, encoding) {
+          rmarkdown::render(inputFile,
+                            encoding = encoding, 
+                            output_file = paste0(
+                              xfun::sans_ext(inputFile), '_', Sys.Date(), '.html'),
+                                output_dir = "../results/lab_book/")})
+---
+
+```{r setup, include=FALSE}
+knitr::opts_knit$set(echo = TRUE, root.dir = getwd(), fig.width = 6, fig.height = 5, warning = FALSE, message = FALSE)
+
+result.dir <- paste0("results/",Sys.Date(),"/")
+
+## creates result.dir with date in if not existent
+ifelse(isFALSE(dir.exists(paste0("../",result.dir))), dir.create(paste0("../",result.dir),recursive = TRUE),"Result directory for today exists already!")
+options(stringsAsFactors = FALSE) 
+```
+
+## 1. Needed libraries
+```{r message=FALSE}
+library(tidyverse)
+library(readxl)
+```
+
+## 2. Data import
+
+### 2.1 Import your data into R
+```{r message=FALSE}
+mtcars <- as_tibble(mtcars)
+
+```
+
+### 2.2 Data wrangling
+```{r message=FALSE}
+data <- mtcars
+parameter1 <- "cyl"
+parameter2 <- "mpg"
+
+testplot <- function(data, xvar = "parameter1", yvar = "parameter2") {
+    p <- ggplot(data,
+                aes_string(x = xvar, y= yvar)) +
+             geom_bar(position="dodge", stat="identity")
+    return(p)
+}
+testplot(mtcars,"mpg","cyl")
+```
+```{r}
+
+dummy.random.data <- tibble(sample_id = c("1a","1b","1c","2a"),
+                     patient_id = c("1","1","1","2"),
+                     site = c("A","A","A","A"),
+                     timepoint = c("0","1","2","0"),
+                     onset_date = c(Sys.Date() + sort(sample(1:10, 4))),
+                     visit_date = c(Sys.Date() + sort(sample(1:10, 4))), 
+                     treatment_date = c(Sys.Date() + sort(sample(1:10, 4))), 
+                     days_po = c(2,3,4,5),
+                     days_pt = c(1,2,3,4), 
+                     group = c("ctrl","ctrl","ctrl","case"), 
+                     param1 = c(runif(4,10,200)),
+                     #param2 = c(runif(4,1,10)),
+                     #param3 = c(runif(4,0.5,300))
+                     )
+
+dummy.data <- read_csv("../data/output_file.csv") %>% 
+  rename(sample_id = SampleID,
+         patient_id = PatientID,
+         site = Site,
+         param1 = cd4,
+         param2 = cd8,
+         param3 = viral_load,
+         ) %>% 
+  mutate(patient_id = as.character(patient_id)) %>% 
+  mutate(visit = as.numeric(gsub("*._","",sample_id)))
+```
+```{r}
+as_tibble(dummy.data) %>% filter(patient_id == "16") %>% head()
+```
+
+```{r message=FALSE, warning=FALSE}
+ggplot() +
+  coord_flip() +
+  geom_point(data = dummy.data,# %>% distinct(patient_id, .keep_all = T), 
+                 aes(x = patient_id, y = days_po, col=visit), 
+                 #col="#1f78b4",
+                 alpha = .3, size=1.5) + 
+    geom_point(data = dummy.data %>% group_by(patient_id) %>% slice_max(days_po), aes(x = patient_id, y=days_pt),color="blue", alpha = .9, size=3) +
+    geom_point(data = dummy.data, aes(x=patient_id, y = days_po-days_pt, col=timepoint),col = "red", size = 3) +
+
+
+  #geom_linerange(data = dummy.data,# %>% distinct(patient_id, .keep_all = T), 
+  #               aes(x = patient_id, ymin = 0, ymax = days_po, col=visit), 
+  #               #col="#1f78b4",
+  #               alpha = .3, size=1.5) +
+  geom_linerange(data = dummy.data %>% distinct(patient_id, .keep_all = T), aes(x = patient_id, ymin = 0, ymax = days_pt), alpha = .3, size=1.5) +
+  geom_linerange(data = dummy.data %>% group_by(patient_id) %>% slice_max(days_po), aes(x = patient_id, ymin = 0, ymax = days_pt),color="blue", alpha = .3, size=1.5) +
+
+  #geom_point(data = dummy.data, aes(x=patient_id, y = days_po, col=as.factor(timepoint)), size = 3) +
+  facet_grid(site ~ ., 
+             scales = "free",
+             space = "free") +
+  theme(text = element_text(size=20),
+        strip.text.y = element_text(angle = 0),
+        axis.title.y = element_blank(),
+        axis.text.y = element_blank(),
+        axis.ticks.y = element_blank(),
+        axis.text.x  = element_blank(),
+        axis.ticks.x = element_blank(),
+        legend.position="bottom",
+        panel.background = element_rect(fill = "white", colour = "grey50")) +
+  labs(title = "Cohort overview",
+       subtitle = paste0('# of patients included: ',length(unique(data$patient_id))),
+       y = "Time",
+       color = "") +
+  guides(colour = guide_legend(nrow = 1))# +
+  #scale_color_manual(values = c(setNames(brewer.pal(6,"PiYG"), c("Acute","D10","M1","M3","M6","Y1")), "Admission" = "#1f78b4", "Onset" = "gray15"),
+  #                   labels = c("Onset","Admission","Acute","D10","M1","M3","M6","Y1")) +
+  #scale_shape_manual(labels = c("Onset","Admission","Acute","D10","M1","M3","M6","Y1"),
+  #                   guide = "none") )
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
