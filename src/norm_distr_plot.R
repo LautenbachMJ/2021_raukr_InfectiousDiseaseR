@@ -12,7 +12,7 @@
 #'
 #' @return
 #' @export
-#' @import ggplot
+#' @import ggplot2
 #'
 #' @examples
 norm_distr_plot <- function(data,value,name,patient_id) {
