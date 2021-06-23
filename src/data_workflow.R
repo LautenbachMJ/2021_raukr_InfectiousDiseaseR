@@ -39,8 +39,6 @@ input_data %>%
   ## calculate numbers of visits
   visits_number()
   
-
-
 ## ============ 
 ## downstream 
 ## ============ 
