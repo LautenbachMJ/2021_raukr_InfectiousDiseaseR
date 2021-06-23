@@ -17,6 +17,9 @@ input_data_calc <- time_between(input_data,on_date = "onset_date", vis_date = "v
 ## manual mapping
 param_mapping <- c("param1" = "CD4","param2" = "CD8","param3" = "Viral_load")
 
+##visits number
+input_data_calc_visit <- visit_number(input_data_calc)
+
 ## plot
 overview_plot(parsed_data = data2, param_mapping = param_mapping)
 
