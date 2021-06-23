@@ -8,6 +8,14 @@ source("src/date_from.R")
 source("src/plot_param_per_day.R")
 source("src/visits_number.R")
 
+source("src/plot_per_param_patient.R")
+source("src/plot_patient_treatmentStatus.R")
+source("src/create_longerdf.R")
+source("src/norm_distr_plot.R")
+source("src/smoothing_spline_regression.R")
+source("src/smooth_spline_plot.R")
+
+
 #load input data
 input_data <- read_delim("data/input_data.csv", delim = ";")
 
@@ -29,6 +37,24 @@ input_data_calc_visit <- visits_number(input_data_calc)
 
 ## plot
 overview_plot(parsed_data = data2, param_mapping = param_mapping)
+
+###------------------------added here
+
+##plot parameter by patient
+plot_fun(param1 = "viral_load", days_po = "days_po", patient_id = "PatientID", data = data )
+
+## plot patient and the period on treatment 
+plot_art(param1 = "viral_load", days_po = "days_po", patient_id = "PatientID", art_status = "art_status", data = data )
+
+## Generate a dataframe used to check whether the parameters are normally distributed 
+#and then plot to check distribution
+longer_data<- create_longerdf(param1 = "viral_load", days_po = "days_po", patient_id = "PatientID", art_status = "art_status", data = data )
+norm_distr_plot(value = "value", name = "name", patient_id = "PatientID", data = longer_data)
+
+## Perform smoothing spline regression in tidy models and join predicted values to the original dataframe 
+#plot the predicted values
+spldata<-spl.fun(param1 = "viral_load", days_po = "days_po", data = data1)
+spl.plot(spldata = spldata, param1 = "viral_load", days_po = "days_po", patient_id = "PatientID" )
 
 
 
