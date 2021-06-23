@@ -21,6 +21,7 @@ options(htmltools.dir.version = FALSE)
 
 class: center, top, inverse
 
+
 # Expectations
 
 ???
@@ -66,19 +67,27 @@ Create package with functions that can
 
 --
 
-1. using Github for the collaboration
+1. Github for the collaboration
 
 --
 
-2. using tidyverse for data preparation
+2. renv for package control
 
 --
 
-3. use ggplot for visualizing data
+3. tidyverse for data preparation
 
 --
 
-4. use tidymodels/broom to predict parameters
+4. ggplot for data visualization
+
+--
+
+5. tidymodels/broom to predict parameters
+
+--
+
+6. rmarkdown, xaringan and css for the presentation
 
 ---
 
@@ -90,10 +99,17 @@ library(magrittr)
 ```
 
 
+# 1. input data
+```{r, echo=FALSE}
+input_data <- read.csv("../data/input_data.csv", stringsAsFactors = FALSE, sep=";")
+head(input_data)
+```
+
 Functions will transform data into desired format
 
 
 --
+
 # Input data
 ```{css,echo=FALSE}
 .myclass>pre>code>.remark-code-line{
@@ -142,3 +158,4 @@ Functions will transform data into desired format
 
 
 ---
+
