@@ -182,18 +182,16 @@ str(parsed_data)
 overview_plot(parsed_data = parsed_data, param_mapping = param_mapping)
 ```
 
-<<<<<<< HEAD
+
 Plot displaying each patient and for which visits data is available
 
 
 
-=======
->>>>>>> 8f32899b529cedf937a418b5e6ee4aff880caa57
 ---
 
 # Plot parameters per days and per patient
 
-```{r, message=FALSE, echo=FALSE}
+```{r, message=FALSE, echo=FALSE, dpi=150, out.width = '250px'}
 plot_param_per_day(parsed_data, y = param1) + labs(col="Patient ID") + xlab("Days post onset") + ylab("CD4 levels")
 plot_param_per_day(parsed_data, y = param2) + labs(col="Patient ID") + xlab("Days post onset") + ylab("CD8 levels")
 plot_param_per_day(parsed_data, y = param3) + labs(col="Patient ID") + xlab("Days post onset") + ylab("Viral load")
