@@ -10,7 +10,7 @@
 #' @import tidyverse
 #' @examples
 time_between <- function(input, on_date, vis_date, treat_date){
-  if(is.Date(input[[treat_date]])==FALSE ||is.Date(input[[vis_date]])==FALSE ||is.Date(input[[on_date]])==FALSE){
+  if(lubridate::is.Date(input[[treat_date]])==FALSE ||lubridate::is.Date(input[[vis_date]])==FALSE ||lubridate::is.Date(input[[on_date]])==FALSE){
     stop("No dates detected, check if class is correct")
   } else {
     input %>% 
