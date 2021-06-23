@@ -15,7 +15,7 @@
 #' @import ggplot
 #'
 #' @examples
-norm_distr_plot <- function(value,name,patient_id,data) {
+norm_distr_plot <- function(data,value,name,patient_id) {
   
   data %>% ggplot2::ggplot (aes_string(x=value, fill=patient_id)) + 
     geom_histogram(bin=30) + 
