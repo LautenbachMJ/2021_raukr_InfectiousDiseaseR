@@ -16,15 +16,13 @@ input_data <- date_from(input_data) #format same as default "%Y-%m-%d"
 input_data_calc <- time_between(input_data,on_date = "onset_date", vis_date = "visit_date", treat_date = "treatment_date" )
 
 ## manual mapping
-param_mapping <- c("param1" = "CD4","param2" = "CD8","param3" = "Viral_load")
+param_mapping <- c("param1" = "cd4","param2" = "cd8", "param3" = "viral_load")
 
 ##visits number
 input_data_calc_visit <- visits_number(input_data_calc)
 
 ## plot
 overview_plot(parsed_data = data2, param_mapping = param_mapping)
-
-
 
 ## === Test of plot_param_per_day.R === ##
 
