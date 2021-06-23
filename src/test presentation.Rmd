@@ -75,7 +75,6 @@ Create package with functions that can
 ---
 
 # Work flow
-#### Packages and methods used in this project
 
 
 1. Github for the collaboration
@@ -135,6 +134,14 @@ input_data %>% glimpse()
 ]
 
 
+<<<<<<< HEAD
+=======
+We have created functions that
+1. Calculates number of days between selected columns of class Date
+2. Adds column with treatment status
+3. Adds column with visit number
+
+>>>>>>> dda73ca8a2c2c2478ea15828e003f7e7cfec5bdf
 
 ---
 # Output after data preparation
@@ -182,19 +189,16 @@ Mainly using the `tidyverse` package
 overview_plot(parsed_data = parsed_data, param_mapping = param_mapping)
 ```
 
-
-Plot displaying each patient and for which visits data is available
-
-
-
 ---
 
 # Plot parameters per days and per patient
 
+<<<<<<< HEAD
 ```{r, message=FALSE, echo=FALSE, dpi=150, out.width = '230px'}
+=======
+```{r, echo=FALSE, warning=FALSE, message=FALSE, dpi=150, out.width = '500px'}
+>>>>>>> dda73ca8a2c2c2478ea15828e003f7e7cfec5bdf
 plot_param_per_day(parsed_data, y = param1) + labs(col="Patient ID") + xlab("Days post onset") + ylab("CD4 levels")
-plot_param_per_day(parsed_data, y = param2) + labs(col="Patient ID") + xlab("Days post onset") + ylab("CD8 levels")
-plot_param_per_day(parsed_data, y = param3) + labs(col="Patient ID") + xlab("Days post onset") + ylab("Viral load")
 ```
 
 

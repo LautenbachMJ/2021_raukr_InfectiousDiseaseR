@@ -2,8 +2,6 @@ library(tidyverse)
 library(lubridate)
 library(rlang)
 
-
-input_data <- read_delim("data/input_data.csv", delim = ";")
 input_data <- read.csv2("data/input_data.csv", stringsAsFactors = FALSE)
 input_data_tb <- as.tibble(input_data)
 
