@@ -13,11 +13,16 @@ output:
       countIncrementalSlides: false
 ---
 
+
 background-image: url(https://upload.wikimedia.org/wikipedia/commons/thumb/0/07/Rauk_faure.jpg/973px-Rauk_faure.jpg)
 
 ```{r setup, include=FALSE}
 options(htmltools.dir.version = FALSE) 
 ```
+
+class: center, bottom, inverse
+
+# Expectations
 
 ???
 
@@ -66,7 +71,7 @@ library(magrittr)
 
 2. Functions that transform data into the format we like
 
-```{r, echo=FALSE}
+```{r, echo=FALSE, }
 input_data <- read.csv("../data/input_data.csv", stringsAsFactors = FALSE, sep=";")
 head(input_data)
 ```
