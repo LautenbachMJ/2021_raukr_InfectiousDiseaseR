@@ -23,6 +23,7 @@ input_data <- read_delim("data/input_data.csv", delim = ";")
 param_mapping <- param_parsing(input_data = input_data, input_param1 = "cd4", input_param2 = "cd8", input_param3 = "viral_load")
 time_mapping <- time_parsing(input_data = input_data, on_date = "onset_date", vis_date = "visit_date", treat_date = "treatment_date")
 
+
 ## ============ 
 ## data wrangling
 ## ============ 
@@ -37,8 +38,6 @@ input_data %>%
   time_between(names(time_mapping)) %>% 
   ## calculate numbers of visits
   visits_number()
-  
-
 
 ## ============ 
 ## downstream 
@@ -57,7 +56,12 @@ parsed_data %>%
 ## requires param1, param2, param3 variables
 overview_plot(parsed_data = parsed_data, param_mapping = param_mapping)
 
+<<<<<<< HEAD
+
+
+=======
 param_mapping <- param_parsing(input_data = input_data,  input_param1 = "cd4", input_param2 = "cd8", input_param3 = "viral_load")
+>>>>>>> 4b71acaf1a505f35bb129888fd998431eed24926
 
 ## edditing input data: convert columns with dates character to date, 
 ## then calculates number of days between dates and adds column with 
@@ -131,6 +135,8 @@ plot_param_per_day(data, y = cd4) + labs(col="Patient ID") + xlab("Days post ons
 plot_param_per_day(data, y = cd8) + labs(col="Patient ID") + xlab("Days post onset") + ylab("CD8 levels")
 plot_param_per_day(data, y = viral_load) + labs(col="Patient ID") + xlab("Days post onset") + ylab("Viral load")
 
+<<<<<<< HEAD
+=======
 
 ## manual mapping
 #param_mapping <- c("param1" = "CD4","param2" = "CD8","param3" = "Viral_load")
@@ -142,3 +148,4 @@ input_data <- date_from(input_data) #format same as default "%Y-%m-%d"
 
 #calculates number of days between dates and adds column with treatment status
 date_cols <- time_mapping %>% names()
+>>>>>>> 4b71acaf1a505f35bb129888fd998431eed24926
