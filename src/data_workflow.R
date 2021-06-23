@@ -24,9 +24,12 @@ param_mapping <- param_parsing(input_data = input_data, input_param1 = "cd4", in
 time_mapping <- time_parsing(input_data = input_data, on_date = "onset_date", vis_date = "visit_date", treat_date = "treatment_date")
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 View(param_mapping)
 >>>>>>> 4b71acaf1a505f35bb129888fd998431eed24926
+=======
+>>>>>>> 9b74e272cfd8573b691897f7f61a28d2733dd81f
 ## ============ 
 ## data wrangling
 ## ============ 
@@ -59,11 +62,11 @@ parsed_data %>%
 
 ##visits number
 ## requires param1, param2, param3 variables
-input_data_calc_visit <- visits_number(input_data_calc)
+#input_data_calc_visit <- visits_number(input_data_calc)
 
 ## plot cohort overview
 ## requires param1, param2, param3 variables
-overview_plot(parsed_data = data2, param_mapping = param_mapping)
+overview_plot(parsed_data = parsed_data, param_mapping = param_mapping)
 
 <<<<<<< HEAD
 
@@ -113,10 +116,10 @@ input_data_ed <- param_parsing(input_data) %>% time_between(on_date = "onset_dat
 ## plot
 overview_plot(parsed_data = data2, param_mapping = param_mapping)
 
-###------------------------added here
+#####------------------------added here
 
 ##plot parameter by patient
-plot_fun(param1 = "viral_load", days_po = "days_po", patient_id = "PatientID", data = data )
+plot_fun(param1 = "param3", days_po = "days_po", patient_id = "patient_id", data = parsed_data )
 
 ## plot patient and the period on treatment 
 plot_art(param1 = "viral_load", days_po = "days_po", patient_id = "PatientID", art_status = "art_status", data = data )
@@ -131,6 +134,12 @@ norm_distr_plot(value = "value", name = "name", patient_id = "PatientID", data =
 spldata<-spl.fun(param1 = "viral_load", days_po = "days_po", data = data1)
 spl.plot(spldata = spldata, param1 = "viral_load", days_po = "days_po", patient_id = "PatientID" )
 
+<<<<<<< HEAD
+
+
+
+=======
+>>>>>>> 4b71acaf1a505f35bb129888fd998431eed24926
 ## === Test of plot_param_per_day.R === ##
 
 data3 <- read_csv("data/output_file.csv")
