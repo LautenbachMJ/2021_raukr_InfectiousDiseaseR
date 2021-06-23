@@ -14,8 +14,16 @@ overview_plot <- function(parsed_data, param_mapping) {
   require(RColorBrewer)
   ## plot
   parsed_data %>% 
+    mutate(patient_id = as.character(patient_id)) %>% 
     ggplot2::ggplot() +
     coord_flip() +
+    facet_grid(rows = vars(site),
+               scales="free",
+               shrink = F,
+               #scales = "fixed",
+               space = "free",
+               #labeller = labeller(site = label_wrap_gen(15))
+    ) +
     ## plot time included in study after symptom onset
     geom_linerange(data = .%>% group_by(patient_id) %>% slice_max(days_po), aes(x = patient_id, ymin = 0, ymax = days_po), color="green",shape=4, alpha = .2, size=2) +
     ## plot visit time points
@@ -29,9 +37,6 @@ overview_plot <- function(parsed_data, param_mapping) {
     geom_point(data = . %>% gather(parameter, value, param1:param3) %>% na.omit(value), aes(x=patient_id, y=days_po, fill=parameter), 
                shape=23, size = 3,position = position_jitterdodge(jitter.width = 0.02)) +
     scale_fill_manual(values= c(RColorBrewer::brewer.pal(length(unique(3)),"PiYG")), name = "Experimental parameters", labels = param_mapping) +
-    facet_grid(site ~ ., 
-               scales = "free",
-               space = "free") +
     theme(text = element_text(size=20),
           strip.text.y = element_text(angle = 0),
           axis.title.y = element_blank(),
