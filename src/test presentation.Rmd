@@ -1,7 +1,7 @@
 ---
 title: "Project 6"
 subtitle: "analysis of infections data "
-author: "Best group ever"
+author: "Jamirah LASTNAME, Jennie Olofsson, Julius Lautenbach, Ona Deulofeu, Zoé Pochon"
 institute: "RaukR 2021"
 date: "2021/06/22 (updated: `r Sys.Date()`)"
 output:
@@ -98,19 +98,7 @@ library(tidyverse)
 library(magrittr)
 ```
 
-
-# 1. input data
-```{r, echo=FALSE}
-input_data <- read.csv("../data/input_data.csv", stringsAsFactors = FALSE, sep=";")
-head(input_data)
-```
-
-Functions will transform data into desired format
-
-
---
-
-# Input data
+1. Input data
 ```{css,echo=FALSE}
 .myclass>pre>code>.remark-code-line{
   font-size: 10px;
@@ -118,22 +106,18 @@ Functions will transform data into desired format
 }
 ```
 
+```{r, echo=FALSE, message=FALSE}
+input_data <- read_delim("../data/input_data.csv", delim = ";")
+```
+
 .myclass[
 ```{r}
-input_data <- read_delim("../data/input_data.csv", delim = ";")
-#head(input_data)
-knitr::kable(input_data)
+head(input_data)
 ```
 ]
---
-Functions will transform data into desired format
 
 ---
 # Output data
-
-```{r, echo=FALSE}
-#str(input_data)
-```
 
 
 ---
@@ -152,7 +136,7 @@ Functions will transform data into desired format
 
 # Challanges
 
-- GitHub
+- GitHub 
 
 - css formating 
 
