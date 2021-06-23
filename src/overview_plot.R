@@ -6,6 +6,8 @@
 #'
 #' @return cohort overview plot (ggplot object)
 #' @export
+#' @import tidyverse
+#' @import RColorBrewer
 #'
 #' @examples
 overview_plot <- function(parsed_data, param_mapping) {
