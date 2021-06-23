@@ -53,8 +53,7 @@ spl.plot(spldata = spldata, param1 = "viral_load", days_po = "days_po", patient_
 
 
 
-=======
->>>>>>> 95fbe31b1e693110e63eb4af637b23a1f7024e9a
+
 ## === Test of plot_param_per_day.R === ##
 
 data3 <- read_csv("data/output_file.csv")
