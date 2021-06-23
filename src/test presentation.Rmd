@@ -58,8 +58,15 @@ Image credit: [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Zoom_p
 Create package with functions that can 
 - Visualize the original data
 - Predict viral load values for patients 
-- Generate cluster for predicted and excisting values
+- Generate cluster for predicted and existing values
 - Visualize the groups
+
+## Actual achievements 
+- Visualize the original data
+- Process the data
+- Plot the data
+- Create a workflow script using the functions but not a package
+- Make a presentation
 
 ---
 
