@@ -13,7 +13,7 @@
 
 #'
 #' @examples
-plot_fun <- function(param1,days_po,patient_id,data){
+plot_fun <- function(data,param1,days_po,patient_id){
   data %>% ggplot2::ggplot (aes_string(x=days_po, y= param1)) + 
     geom_point() + 
     geom_line() + 

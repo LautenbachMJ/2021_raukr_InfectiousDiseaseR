@@ -11,7 +11,7 @@
 #' @import ggplot
 #'
 #' @examples
-plot_art <- function(param1, days_po, patient_id, art_status, data){
+plot_art <- function(data,param1, days_po, patient_id, art_status){
   data %>% ggplot2::ggplot (aes_string(x=days_po, y= param1, color = art_status)) + 
     geom_point() + 
     geom_line() + 
