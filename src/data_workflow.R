@@ -7,7 +7,6 @@ source("src/time_between.R")
 source("src/date_from.R")
 source("src/plot_param_per_day.R")
 source("src/visits_number.R")
-
 source("src/plot_per_param_patient.R")
 source("src/plot_patient_treatmentStatus.R")
 source("src/create_longerdf.R")
@@ -28,7 +27,7 @@ time_mapping <- time_parsing(input_data = input_data, on_date = "onset_date", vi
 ## data wrangling
 ## ============ 
 parsed_data <-
-input_data %>% 
+  input_data %>% 
   ## transform "_date" columns into date format
   date_from() %>% 
   ## mapping input variable names to function "under-the-hood" variables
