@@ -39,15 +39,19 @@ Create package with functions that can
 
 --
 
-1. blabla
+1. using Github for the collaboration
 
 --
 
-2. blabla
+2. using tidyverse for data preparation
 
 --
 
-3. blabla
+3. use ggplot for visualizing data
+
+--
+
+4. use tidymodels/broom to predict parameters
 
 ---
 
@@ -63,11 +67,9 @@ library(magrittr)
 2. Functions that transform data into the format we like
 
 ```{r, echo=FALSE}
-input_data <- read.csv("../src/input_data.csv", stringsAsFactors = FALSE, sep=";")
+input_data <- read.csv("../data/input_data.csv", stringsAsFactors = FALSE, sep=";")
 head(input_data)
 ```
-
-
 
 
 
