@@ -10,8 +10,8 @@
 #' @import tidyverse
 #'
 #' @examples
-visits_number <- function(input, patient_id, visit_date){
+visits_number <- function(input){
   input %>% group_by(patient_id) %>% 
     arrange(vis_date) %>% 
-    subset(input_param1 != "NA"  | input_param2 != "NA" | input_param3 != "NA" ) %>% 
+    subset(param1 != "NA"  | param2 != "NA" | param3 != "NA" ) %>% 
     mutate(visit = 1:n())}
