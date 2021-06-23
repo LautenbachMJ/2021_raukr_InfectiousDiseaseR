@@ -12,21 +12,14 @@ source("src/visits_number.R")
 input_data <- read_delim("data/input_data.csv", delim = ";")
 
 # extract parameter names
-param_mapping <- param_parsing(input_data = input_data,input_param1 = "cd4", input_param2 = "cd8", input_param3 = "viral_load")
+param_mapping <- param_parsing(input_data = input_data,  input_param1 = "cd4", input_param2 = "cd8", input_param3 = "viral_load")
 
-View(input_data)
-
-#Convert columns with dates from Character to Date
-input_data <- date_from(input_data) #format same as default "%Y-%m-%d"
-
-#calculates number of days between dates and adds column with treatment status
-input_data_calc <- time_between(input_data,on_date = "onset_date", vis_date = "visit_date", treat_date = "treatment_date" )
-
-##visits number
-input_data_calc_visit <- visits_number(input_data_calc)
-
-##input_data_ed
-input_data_ed <- param_parsing(input_data) %>% time_between(on_date = "onset_date", vis_date = "visit_date", treat_date = "treatment_date") %>% visits_number()
+## edditing input data: convert columns with dates character to date, 
+## then calculates number of days between dates and adds column with 
+## treatment status and finally visits number per pacient
+input_data_ed <- param_parsing(input_data) %>% 
+  time_between(on_date = "onset_date", vis_date = "visit_date", treat_date = "treatment_date") %>% 
+  visits_number()
 
 ## plot
 overview_plot(parsed_data = data2, param_mapping = param_mapping)
