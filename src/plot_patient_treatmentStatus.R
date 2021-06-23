@@ -8,7 +8,7 @@
 #'
 #' @return
 #' @export
-#' @import ggplot
+#' @import ggplot2
 #'
 #' @examples
 plot_art <- function(data,param1, days_po, patient_id, art_status){

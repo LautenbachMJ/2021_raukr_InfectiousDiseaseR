@@ -11,7 +11,7 @@
 #'
 #' @examples
 #' plot_param_per_day(data, y = cd4) for example
-plot_param_per_day <- function(data = data, x = days_po, y, category = patient_id) 
+plot_param_per_day <- function(data = data, x = days_po, y = param1, category = patient_id) 
 {
   ggplot(data, aes({{x}}, {{y}}, group = {{category}}, color = as.factor({{category}}))) +
     geom_smooth(na.rm = TRUE, se = FALSE)
