@@ -12,21 +12,35 @@ output:
       highlightLines: true
       countIncrementalSlides: false
 ---
-
-
 background-image: url(https://upload.wikimedia.org/wikipedia/commons/thumb/0/07/Rauk_faure.jpg/973px-Rauk_faure.jpg)
+
 
 ```{r setup, include=FALSE}
 options(htmltools.dir.version = FALSE) 
 ```
 
-class: center, bottom, inverse
+class: center, top, inverse
 
 # Expectations
 
 ???
 
 Image credit: [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Rauk_faure.jpg)
+
+---
+background-image: url(https://upload.wikimedia.org/wikipedia/commons/thumb/4/40/Zoom_participants_Bubrikh_readings_2020_conference.png/640px-Zoom_participants_Bubrikh_readings_2020_conference.png)
+
+class: center, bottom, inverse
+
+# Reality
+
+--
+
+# But still a very good course! :) 
+
+???
+
+Image credit: [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Zoom_participants_Bubrikh_readings_2020_conference.png)
 
 ---
 
@@ -41,7 +55,6 @@ Create package with functions that can
 ---
 
 # Work flow
-### TEST ZOé
 
 --
 
@@ -63,21 +76,28 @@ Create package with functions that can
 
 # Prepare the data
 
-1. load correct libraries
-```{r, message=FALSE, warning=FALSE}
+```{r, message=FALSE, warning=FALSE, echo=FALSE}
 library(tidyverse)
 library(magrittr)
 ```
---
 
-2. Functions that transform data into the format we like
+1. input data
 
-```{r, echo=FALSE, }
+```{r, echo=FALSE }
 input_data <- read.csv("../data/input_data.csv", stringsAsFactors = FALSE, sep=";")
-head(input_data)
+knitr::kable(head(input_data), format = 'html',cex=0.5)
 ```
 
+--
+Functions will transform data into desired format
 
+
+
+--
+```{r, echo=FALSE, }
+input_data <- read.csv("../data/input_data.csv", stringsAsFactors = FALSE, sep=";")
+summary(input_data)
+```
 
 ---
 background-image: url(`r xaringan:::karl`)
