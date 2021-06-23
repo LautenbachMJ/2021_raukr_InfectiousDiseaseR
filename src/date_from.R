@@ -9,6 +9,6 @@
 #'
 #' @examples
 #' date_form(df, "%Y-%m-%d")
-date_form <- function(x, formats){
+date_from <- function(x, formats){
   x %>% mutate(across(matches("date"),as.Date, formats))
 } 
