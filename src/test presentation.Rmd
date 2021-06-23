@@ -12,16 +12,44 @@ output:
       highlightLines: true
       countIncrementalSlides: false
 ---
+<<<<<<< HEAD
 
+
+=======
+>>>>>>> bc762c2dd7043ef0e63a0695b0567e24f38f70bf
 background-image: url(https://upload.wikimedia.org/wikipedia/commons/thumb/0/07/Rauk_faure.jpg/973px-Rauk_faure.jpg)
+
 
 ```{r setup, include=FALSE}
 options(htmltools.dir.version = FALSE) 
 ```
 
+<<<<<<< HEAD
+class: center, bottom, inverse
+=======
+class: center, top, inverse
+>>>>>>> bc762c2dd7043ef0e63a0695b0567e24f38f70bf
+
+# Expectations
+
 ???
 
 Image credit: [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Rauk_faure.jpg)
+
+---
+background-image: url(https://upload.wikimedia.org/wikipedia/commons/thumb/4/40/Zoom_participants_Bubrikh_readings_2020_conference.png/640px-Zoom_participants_Bubrikh_readings_2020_conference.png)
+
+class: center, bottom, inverse
+
+# Reality
+
+--
+
+# But still a very good course! :) 
+
+???
+
+Image credit: [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Zoom_participants_Bubrikh_readings_2020_conference.png)
 
 ---
 
@@ -36,7 +64,6 @@ Create package with functions that can
 ---
 
 # Work flow
-### TEST ZOé
 
 --
 
@@ -58,21 +85,35 @@ Create package with functions that can
 
 # Prepare the data
 
-1. load correct libraries
-```{r, message=FALSE, warning=FALSE}
+```{r, message=FALSE, warning=FALSE, echo=FALSE}
 library(tidyverse)
 library(magrittr)
+library(kableExtra)
 ```
---
 
-2. Functions that transform data into the format we like
-
+<<<<<<< HEAD
+```{r, echo=FALSE, }
+=======
+1. input data
 ```{r, echo=FALSE}
+>>>>>>> bc762c2dd7043ef0e63a0695b0567e24f38f70bf
 input_data <- read.csv("../data/input_data.csv", stringsAsFactors = FALSE, sep=";")
-head(input_data)
+#knitr::kable(head(input_data), format = 'html', caption = "Input data")
+
+knitr::kable(head(input_data), booktabs = TRUE) %>%
+  kableExtra::kable_styling(font_size = 8)
 ```
 
+--
+Functions will transform data into desired format
 
+
+
+--
+```{r, echo=FALSE, }
+input_data <- read.csv("../data/input_data.csv", stringsAsFactors = FALSE, sep=";")
+summary(input_data)
+```
 
 ---
 background-image: url(`r xaringan:::karl`)
