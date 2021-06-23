@@ -12,10 +12,6 @@ output:
       highlightLines: true
       countIncrementalSlides: false
 ---
-<<<<<<< HEAD
-=======
-
->>>>>>> 0b79f800270250775421353c8fac3aa47f02b31a
 background-image: url(https://upload.wikimedia.org/wikipedia/commons/thumb/0/07/Rauk_faure.jpg/973px-Rauk_faure.jpg)
 
 
@@ -23,13 +19,10 @@ background-image: url(https://upload.wikimedia.org/wikipedia/commons/thumb/0/07/
 options(htmltools.dir.version = FALSE) 
 ```
 
-<<<<<<< HEAD
 class: center, top, inverse
 
 # Expectations
 
-=======
->>>>>>> 0b79f800270250775421353c8fac3aa47f02b31a
 ???
 
 Image credit: [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Rauk_faure.jpg)
@@ -86,17 +79,16 @@ Create package with functions that can
 ```{r, message=FALSE, warning=FALSE, echo=FALSE}
 library(tidyverse)
 library(magrittr)
+library(kableExtra)
 ```
 
 1. input data
-
-<<<<<<< HEAD
-```{r, echo=FALSE }
-=======
 ```{r, echo=FALSE}
->>>>>>> 0b79f800270250775421353c8fac3aa47f02b31a
 input_data <- read.csv("../data/input_data.csv", stringsAsFactors = FALSE, sep=";")
-knitr::kable(head(input_data), format = 'html',cex=0.5)
+#knitr::kable(head(input_data), format = 'html', caption = "Input data")
+
+knitr::kable(head(input_data), booktabs = TRUE) %>%
+  kableExtra::kable_styling(font_size = 8)
 ```
 
 --
