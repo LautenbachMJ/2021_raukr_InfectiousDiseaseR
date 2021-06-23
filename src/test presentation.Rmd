@@ -60,7 +60,9 @@ Create package with functions that can
 - Predict viral load values for patients 
 - Generate cluster for predicted and existing values
 - Visualize the groups
+
 --
+
 ## Actual achievements 
 - Visualize the original data
 - Process the data
@@ -99,11 +101,19 @@ Create package with functions that can
 ---
 
 ```{r, message=FALSE, warning=FALSE, echo=FALSE}
+source("overview_plot.R")
 source("param_parsing.R")
 source("time_parsing.R")
 source("time_between.R")
 source("date_from.R")
+source("plot_param_per_day.R")
 source("visits_number.R")
+source("plot_per_param_patient.R")
+source("plot_patient_treatmentStatus.R")
+source("create_longerdf.R")
+source("norm_distr_plot.R")
+source("smoothing_spline_regression.R")
+source("smooth_spline_plot.R")
 library(tidyverse)
 library(magrittr)
 ```
@@ -127,6 +137,7 @@ input_data <- read_delim("../data/input_data.csv", delim = ";")
 str(input_data)
 ```
 ]
+
 --
 
 We have created functions that
@@ -164,8 +175,12 @@ str(parsed_data)
 ]
 
 ---
-# Plots 
-## here are some plots
+Data overview
+
+```{r, echo=FALSE, warning=FALSE, message=FALSE, dpi=150, out.width = '400px'}
+overview_plot(parsed_data = parsed_data, param_mapping = param_mapping)
+```
+
 
 
 
