@@ -60,7 +60,7 @@ Create package with functions that can
 - Predict viral load values for patients 
 - Generate cluster for predicted and existing values
 - Visualize the groups
-
+--
 ## Actual achievements 
 - Visualize the original data
 - Process the data
@@ -127,6 +127,13 @@ input_data <- read_delim("../data/input_data.csv", delim = ";")
 str(input_data)
 ```
 ]
+--
+
+We have created functions that
+1. Calculates number of days between selected columns of class Date
+2. Adds column with treatment status
+3. Adds column with visit number
+
 
 ---
 # Output after data preparation
