@@ -102,7 +102,9 @@ library(magrittr)
 ```{css,echo=FALSE}
 .myclass>pre>code>.remark-code-line{
   font-size: 10px;
-  color: red
+  font-style: italic;
+  background: #f8f8f8 ;
+  border-radius: 2px;
 }
 ```
 
@@ -110,8 +112,12 @@ library(magrittr)
 input_data <- read_delim("../data/input_data.csv", delim = ";")
 ```
 
+```{r, eval=FALSE}
+head(input_data)
+```
+
 .myclass[
-```{r}
+```{r, echo=FALSE}
 head(input_data)
 ```
 ]
