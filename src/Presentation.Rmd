@@ -32,6 +32,7 @@ options(stringsAsFactors = FALSE)
 ## 1. Needed libraries
 ```{r message=FALSE}
 library(tidyverse)
+library(magrittr)
 ```
 
 ## 2. Data import
@@ -40,6 +41,7 @@ library(tidyverse)
 ```{r message=FALSE}
 ## to import csv files
 data <- read_csv("../data/output_file.csv")
+input_data <- read.csv("../data/input_data.csv", stringsAsFactors = FALSE, sep=";")
 ```
 ### 2.2. Prepare the data
 ```{r message=FALSE}
