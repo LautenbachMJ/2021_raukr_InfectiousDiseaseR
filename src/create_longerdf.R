@@ -13,10 +13,10 @@
 #' @import tidyr
 #'
 #' @examples
-create_longerdf <- function(param1, 
+create_longerdf <- function(data,param1, 
                             days_po,
                             patient_id, 
-                            art_status,data){
+                            art_status){
   data %>% dplyr::filter(art_status == "yes")%>%
     dplyr::ungroup() %>%
     dplyr::select(patient_id, days_po, param1) %>%
