@@ -71,23 +71,35 @@ GGally::ggpairs(mapping = ggplot2::aes(color=site))
 
 ## 4. Visualisation of results (our functions)
 
-plot_param_per_day <- function(data = data, x = days_po, y, category = patient_id, treated = FALSE) 
-{
-ggplot(data, aes({{x}}, {{y}}, group = {{category}}, color = as.factor({{category}}))) +
-  geom_smooth(na.rm = TRUE, se = FALSE, linetype = if({{treated}}) {"dashed"} else {"solid"})
-}
+### 4.1. Parameters levels per day for each patient
 
 ```{r message=FALSE}
-plot_param_per_day <- function(data = data, x = days_po, y, category = patient_id, treated = FALSE) 
+plot_param_per_day <- function(data = data, x = days_po, y, category = patient_id) 
 {
-ggplot(data, aes({{x}}, {{y}}, group = {{category}}, color = as.factor({{category}}))) +
-  geom_smooth(na.rm = TRUE, se = FALSE, linetype = if({{treated}}) {"dashed"} else {"solid"})
+  ggplot(data, aes({{x}}, {{y}}, group = {{category}}, color = as.factor({{category}}))) +
+    geom_smooth(na.rm = TRUE, se = FALSE)
+}
+
+plot_param_per_day(data, y = cd4) + labs(col="Patient ID") + xlab("Days post onset") + ylab("CD4 levels")
+plot_param_per_day(data, y = cd8) + labs(col="Patient ID") + xlab("Days post onset") + ylab("CD8 levels")
+plot_param_per_day(data, y = viral_load) + labs(col="Patient ID") + xlab("Days post onset") + ylab("Viral load")
+```
+
+### 4.2. Parameters levels per day for each patient (solid line and then dashed when under treatment) (Not working yet)
+```{r message=FALSE}
+plot_param_per_day <- function(data = data, x = days_po, y, category = patient_id, treated = art_status) 
+{
+ggplot(data, aes({{x}}, {{y}}, group = {{category}}, color = as.factor({{category}}, line_type = as.factor({{treated}})))) +
+    geom_smooth(line_type = as.factor({{treated}}), na.rm = TRUE, se = FALSE)
 }
 
 plot_param_per_day(data, y = cd4) + labs(col="Patient ID", xlab = "Days post onset", ylab = "cd4 levels")
 plot_param_per_day(data, y = cd8) + labs(col="Patient ID", xlab = "Days post onset", ylab = "cd8 levels")
 plot_param_per_day(data, y = viral_load) + labs(col="Patient ID", xlab = "Days post onset", ylab = "Viral load")
 ```
+
+stat_smooth(aes(linetype = if_else({{treated}} == "yes", "dashed", "solid"))) +
+    geom_smooth(na.rm = TRUE, se = FALSE)
 
 ## 5. Discussion & Comments
 ```{r message=FALSE}
